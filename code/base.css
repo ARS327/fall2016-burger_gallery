@@ -1,0 +1,627 @@
+/* Viennapaint red*/
+/* RESET */
+/* Everything */
+html,
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+fieldset,
+input,
+abbr,
+article,
+aside,
+command,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+mark,
+meter,
+nav,
+output,
+progress,
+section,
+summary,
+time {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+address,
+caption,
+cite,
+code,
+em,
+strong,
+th,
+figcaption {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+}
+fieldset,
+iframe {
+  border: none;
+}
+caption,
+th {
+  text-align: left;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+article,
+aside,
+footer,
+header,
+hgroup,
+nav,
+section,
+figure,
+figcaption {
+  display: block;
+}
+/* BASE */
+/* Positions & Sizes */
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+.clear {
+  clear: both;
+}
+.hidden {
+  display: none !important;
+}
+/* Colors & Fonts */
+#body {
+  font-family: "Helvetica";
+}
+a {
+  text-decoration: none;
+}
+a img {
+  border: none;
+}
+/* Internet Explorer 9 */
+*:focus {
+  outline: none;
+}
+/* Don't show focus rectangle (Safari, Firefox) */
+.clickable {
+  cursor: pointer;
+}
+strong {
+  font-weight: bold;
+}
+/* Dropshadow */
+.dropshadow {
+  position: absolute;
+  z-index: -2;
+  left: auto;
+  display: block;
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+}
+/* Image replacements (common part) */
+.replace-image {
+  display: inline-block;
+  height: 0;
+  overflow: hidden;
+  background: url('sprite-sheet_1x.png') no-repeat;
+  background: -moz-image-set(url('sprite-sheet_1x.png') 1x, url('sprite-sheet_2x.png') 2x) no-repeat;
+  background: -ms-image-set(url('sprite-sheet_1x.png') 1x, url('sprite-sheet_2x.png') 2x) no-repeat;
+  background: -o-image-set(url('sprite-sheet_1x.png') 1x, url('sprite-sheet_2x.png') 2x) no-repeat;
+  background: -webkit-image-set(url('sprite-sheet_1x.png') 1x, url('sprite-sheet_2x.png') 2x) no-repeat;
+  background: image-set(url('sprite-sheet_1x.png') 1x, url('sprite-sheet_2x.png') 2x) no-repeat;
+  /* HiDPI support */
+
+  /* IE 6 FIX -> */
+  line-height: 0;
+  font-size: 0;
+}
+/* HEADER */
+/* Positions & Sizes */
+.admin-bar #header {
+  top: 28px;
+}
+/* Move down if admin-bar is visible */
+#header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: none;
+}
+#header-content {
+  position: relative;
+  margin: 5px 0;
+  height: 25px;
+}
+#header-background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #fff159;
+}
+#header-dropshadow {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+}
+/* Colors & Fonts */
+#header {
+  font-size: 0.7em;
+}
+/*
+	div#header
+		div#header-content                    ... position: fixed
+			h1#logotype                       ... float: left
+				a.replace-image               ... display: inline-block
+			div#navigation                    ...(display: block)
+				div#navigation-collapsed      ... display: none
+				div#navigation-left           ... float: left        
+				div#navigation-right          ... float: right  
+			div#zoomlevel                     ...(display: block)
+				div#zoomlevel-button-decrease ... float: left
+				div#zoomlevel-slider          ... float: left
+					span.replace-image
+				div#zoomlevel-button-increase ... float: left
+		div#header-background
+		div#header-dropshadow
+*/
+/* LOGOTYPE */
+/* Positions & Sizes */
+#logotype {
+  float: left;
+  margin: 0 5px 0 15px;
+}
+/* Image replacements (individual part)  */
+#logotype .replace-image {
+  width: 125px;
+  padding-top: 25px;
+}
+/* NAVIGATION */
+/* Positions & Sizes */
+#navigation-left {
+  float: left;
+}
+#navigation-right {
+  float: right;
+}
+.level-1 .navigation,
+.level-2 .navigation {
+  display: block;
+  /* @block: make full width & height clickable */
+}
+.level-1 .navigation a,
+.level-2 .navigation a {
+  display: block;
+  line-height: 25px;
+  padding: 0 8px;
+  margin: 0 2px;
+}
+.level-1 {
+  /* float vs. inline-block: inline block only works with naturally inline elements with Internet Explorer 6/7 ignores inline block...*/
+
+}
+.level-1 .navigation {
+  float: left;
+}
+.level-2 {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+}
+.level-2 .navigation {
+  float: none;
+}
+/* Colors & Fonts */
+.level-1,
+.level-2 {
+  background-color: #fff159;
+}
+.level-1 .navigation.disabled a,
+.level-2 .navigation.disabled a {
+  display: none;
+}
+.level-1 .navigation.current a,
+.level-2 .navigation.current a {
+  color: #e2000d;
+}
+.level-1 .navigation.normal a,
+.level-2 .navigation.normal a {
+  color: #000000;
+}
+.level-1 .navigation.normal a:hover,
+.level-2 .navigation.normal a:hover {
+  color: #e2000d;
+}
+.level-1 .navigation {
+  border-left: 1px solid #000000;
+  /* Internet Explorer 7 only supports :first-child */
+
+}
+.level-1 .navigation:first-child {
+  border: none;
+}
+.level-1 .navigation a {
+  text-transform: uppercase;
+}
+.level-2 .navigation {
+  border: none;
+}
+.level-2 .navigation a {
+  text-transform: none;
+}
+/* NAVIGATION (COLLAPSED) */
+/* Positions & Sizes */
+#navigation.collapsed {
+  position: absolute;
+  right: 0;
+}
+/* Display menu on the right */
+#navigation-collapsed {
+  float: right;
+  margin: 0 15px 0 5px;
+}
+.collapsed {
+  /* 2nd level */
+
+}
+.collapsed #navigation-left,
+.collapsed #navigation-right {
+  float: none;
+}
+.collapsed #navigation-left {
+  clear: both;
+  margin: 30px 0px 0 0;
+}
+.collapsed #navigation-right {
+  border-top: 1px solid #bfbfbf;
+  margin: 0 0px 0 0;
+}
+.collapsed .level-1 .navigation,
+.collapsed .level-2 .navigation {
+  float: none;
+  border: none;
+}
+.collapsed .n_avigation.has-children {
+  margin-left: -8px;
+  padding-left: 8px;
+  background-position: 0px 0;
+  background: url('menu_arrow.png') no-repeat;
+}
+.collapsed .n_avigation.has-children ul {
+  /*margin-top: -100px;*/
+  right: 115px;
+  height: auto !important;
+}
+/* Image replacements (individual part)  */
+#navigation-collapsed.replace-image {
+  width: 52px;
+  padding-top: 25px;
+  background-position: -73px -25px;
+}
+/* 2nd level */
+.collapsed .navigation.has-children ul {
+  margin-top: -25px;
+  right: 115px;
+  height: auto !important;
+}
+.collapsed .navigation.has-children ul a {
+  white-space: nowrap;
+}
+.collapsed .navigation.has-children ul li {
+  /*clear: both;*/
+  /*float: left;*/
+  /*display: inline-block;*/
+}
+.collapsed .navigation.has-children {
+  margin-left: -8px;
+  background-position: 0px 0;
+  background: url('menu_arrow.png') no-repeat;
+}
+.collapsed .navigation.has-children a {
+  padding-left: 18px;
+}
+/* ZOOMLEVEL SLIDER / DECREASE / INCREASE */
+/* Positions & Sizes */
+/*		#zoomlevel.collapsed { position: absolute; }*/
+#zoomlevel {
+  margin: 0 10px;
+}
+#zoomlevel-slider,
+#zoomlevel-button-decrease,
+#zoomlevel-button-increase {
+  float: left;
+}
+#zoomlevel-slider {
+  display: inline-block;
+  width: 175px;
+  height: 1px;
+  background-color: #000000;
+  vertical-align: top;
+  margin-top: 12px;
+}
+#zoomlevel-button-decrease {
+  margin-right: 5px;
+}
+#zoomlevel-button-increase {
+  margin-left: 5px;
+}
+/* Image replacements (individual part)  */
+#zoomlevel-slider .replace-image {
+  width: 13px;
+  padding-top: 25px;
+  background-position: -60px -25px;
+  position: relative;
+  z-index: 2;
+  margin-left: -6px;
+  margin-top: -12px;
+}
+#zoomlevel-button-decrease.replace-image {
+  width: 20px;
+  padding-top: 25px;
+  background-position: 0 -25px;
+}
+#zoomlevel-button-increase.replace-image {
+  width: 40px;
+  padding-top: 25px;
+  background-position: -20px -25px;
+}
+/* UNIVERSE */
+#universe-viewport {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #932525;
+  overflow: hidden;
+}
+#universe,
+#universe-images,
+#universe-images-backgrounds,
+#universe-images-tiles,
+#universe-info {
+  display: block;
+  position: absolute;
+    
+}
+.universe-image-background,
+.universe-image-tile {
+  display: block;
+  position: absolute;
+}
+#universe-viewport.grabbing {
+  cursor: url('cursors/grabbing.cur'), -moz-grabbing;
+}
+#universe-images {
+  background-color: #333;
+    
+}
+#universe-info {
+  display: none;
+}
+
+#universe-image-dropshadow {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+}
+
+/* Initially hidden */
+/* CONTENT */
+#content-viewport {
+  color: #000;
+  width: 100%;
+  overflow: hidden;
+}
+#content.page {
+  margin: 80px 80px 0 155px;
+  /*color: #000;*/
+  max-width: 500px;
+}
+.narrow #content {
+  margin: 60px 35px 0 35px;
+}
+#content h1 {
+  color: #E2000D;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#content p,
+#content form {
+  margin-bottom: 1.6em;
+}
+#content dl dt {
+  margin-top: .8em;
+}
+#content a {
+  text-decoration: underline;
+}
+#content dl dt,
+#content p {
+  font-size: 0.8em;
+}
+#content form textarea,
+#content form input.text {
+  display: block;
+  border: inset 2px;
+}
+#content form textarea {
+  margin-left: -2px;
+}
+#content ul.localmenu {
+  margin-bottom: 2em;
+}
+#content ul.localmenu li {
+  color: #E2000D;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#content ul.localmenu li a {
+  text-decoration: none;
+}
+#content ul.localmenu li.current a {
+  color: #E2000D;
+}
+#content ul.localmenu li.disabled a {
+  color: #F00;
+}
+/*	#content {
+		&.video {
+			background-color: #000;
+			iframe { outline: 1px solid red; }
+		}
+	}
+*/#content.video {
+  outline: 2px solid #0FF;
+  margin: 0;
+  height: 100%;
+  background-color: #000;
+}
+#content.video p {
+  height: 100%;
+}
+#content.video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -320px;
+  margin-top: -195px;
+  width: 640px;
+  height: 390px;
+}
+/*	@media screen and (max-aspect-ratio: 16/9) {
+		#content.video { 
+			iframe { border: 1px solid #FF0; }
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 16/9) {
+		#content.video {
+			iframe { border: 1px solid #F0F; }
+		}
+	}*/
+/* WIDGETS */
+.showVideo {
+  position: absolute;
+}
+/* VIDEO */
+.close.replace-image {
+  width: 30px;
+  padding-top: 30px;
+  background-position: 0 -50px;
+}
+.close.replace-image:hover {
+  background-position: -30px -50px;
+}
+/* VIDEO PLAYER */
+#dimmer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000;
+  opacity: .8;
+}
+#videos {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+#videos .video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: none;
+  background-color: #000;
+}
+#videos .close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: none;
+}
+/* VIDEO */
+/* DEBUG */
+#debug {
+  display: none;
+}
+/* STATUS */
+#monitor {
+  /*display: block;*/
+  position: fixed;
+  z-index: 2;
+  top: 55px;
+  right: 10px;
+  font-size: 0.7em;
+  font-style: monaco;
+  /*#F80*/
+
+}
+#monitor .content {
+  z-index: 1;
+  color: #FFF;
+  padding: 5px;
+}
+#monitor .background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .6;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+#monitor td.value {
+  font-weight: bold;
+  width: 12em;
+}
+/* LESS MIXINS */
+/* Box shadow */
+/* Image sets */
+/* NOTE: The 1x and 2x need to be escaped, because less erroneously compiles '1x' to '1 x' */
